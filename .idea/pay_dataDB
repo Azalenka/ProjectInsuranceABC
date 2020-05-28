@@ -1,0 +1,19 @@
+create table pay_data
+(
+    id             serial    not null
+        constraint pay_data_pk
+            primary key,
+    client_id      integer   not null
+        constraint pay_data_client_id_fk
+            references client
+            on delete cascade,
+    target_account varchar   not null,
+    sum            numeric   not null,
+    date           timestamp not null
+);
+
+alter table pay_data
+    owner to postgres;
+
+create unique index pay_data_id_uindex
+    on pay_data (id);

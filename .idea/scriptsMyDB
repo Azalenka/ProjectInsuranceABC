@@ -1,0 +1,16 @@
+create table "insuranceProducts"
+(
+    "productId" serial            not null,
+    product     varchar           not null,
+    price       integer default 0 not null
+);
+
+comment on table "insuranceProducts" is 'список страховых продуктов
+';
+
+comment on column "insuranceProducts"."productId" is 'идентификационный номер продукта';
+
+comment on column "insuranceProducts".product is 'страховой продукт';
+
+alter table "insuranceProducts"
+    owner to postgres;

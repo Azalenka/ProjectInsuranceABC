@@ -1,0 +1,27 @@
+create table client
+(
+    id         serial            not null
+        constraint client_pk
+            primary key,
+    login      varchar           not null,
+    pswd       varchar           not null,
+    firstname  varchar           not null,
+    secondname varchar           not null,
+    surname    varchar           not null,
+    account_id integer default 0 not null
+);
+
+comment on table client is 'Таблица клиентов';
+
+comment on column client.id is 'Идентификатор';
+
+comment on column client.account_id is 'Личный кабинет';
+
+alter table client
+    owner to postgres;
+
+create unique index client_id_uindex
+    on client (id);
+
+create unique index client_login_uindex
+    on client (login);
